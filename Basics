@@ -12,4 +12,7 @@ kubectl config view --kubeconfig=my-kube-config -o jsonpath="{.contexts[?(@.cont
 *kubectl support with --sort-by and custom-columns does not need to provide .items[*] as it get these details implicitly.*
 
 kubectl get pv --sort-by=.spec.capacity.storage -o=custom-columns=NAME:.metadata.name,-o=custom-columns=CAPACITY:.spec.capacity.storage
+
+kubectl get pods --all-namespaces -o=custom-columns=PODNAME:.metadata.name,PODNAMESPACE:.metadata.name
+spaces
  
