@@ -13,6 +13,9 @@ kubectl config view --kubeconfig=my-kube-config -o jsonpath="{.contexts[?(@.cont
 
 kubectl get pv --sort-by=.spec.capacity.storage -o=custom-columns=NAME:.metadata.name,-o=custom-columns=CAPACITY:.spec.capacity.storage
 
-kubectl get pods --all-namespaces -o=custom-columns=PODNAME:.metadata.name,PODNAMESPACE:.metadata.name
+kubectl get pods --all-namespaces --sort-by='{.metadata.name}' -o=custom-columns=PODNAME:.metadata.name,PODNAMESPACE:.metadata.name
 spaces
  
+kubectl config view --kubeconfig=my-kube-config -o jsonpath="{.contexts[?(@.context.user=='-user')].name}" > /opt/outputs/aws-context-name
+
+
